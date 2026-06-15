@@ -1,0 +1,27 @@
+EMAP Dataset Challenge — Submission
+===================================
+
+Validation RMSE: arousal 0.3055, heart rate 9.42 BPM, GSR 1.0e-5
+(29 held-out participants, 84,019 bins)
+
+CONTENTS
+  EMAP_submission.pptx   PPT slide: approach + results
+  prediction.py          End-to-end inference with all preprocessing
+  model.py, model_v2.py  Model definitions (imported by prediction.py)
+  selected_features.csv  The features used by the model
+  model_assets/          Trained models + per-model normalisation/kernels + blend config
+  training_code/         Open-source code to reproduce the models from scratch
+  prediction_plots/      Predicted-vs-true curves, parity plot, topomap visualisations
+  README.md              Full write-up (approach, ablations, analysis)
+
+RUN INFERENCE
+  pip install -r requirements.txt
+  python prediction.py --input <folder_of_Features_P###-T##.csv> --output predictions.csv
+  # or a single file:
+  python prediction.py --input Features_P091-T01.csv --output predictions.csv
+
+Output CSV columns: Participant, Trial, Bin, Pred_Arousal, Pred_HR, Pred_GSR
+  (arousal in [0,1]; heart rate in BPM; GSR in its recorded unit)
+
+REPRODUCE THE MODELS
+  See README.md "Reproduce" section; scripts are in training_code/.

@@ -1,0 +1,4 @@
+{
+  "val_rmse": 0.3050747811794281,
+  "model": "3-model (run4+q24+grid48dev) + calib k=1.318"
+}

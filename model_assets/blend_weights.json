@@ -1,0 +1,30 @@
+{
+  "_comment": "Final ensemble: 3 neural snapshots with convex weights fit on validation. model.pt and model_quartile.pt predict arousal directly; model_q48dev.pt predicts y - trial_mean on a 48x48 topomap and is re-centred to the training mean at inference. Each model carries its own norm_stats (*.norm.npz) and IDW kernel (*.idw.npz). After blending: Gaussian smoothing sigma=0.5 within each trial, then per-trial variance calibration k=1.318 (corrects ensemble underconfidence).",
+  "models": {
+    "model.pt": {
+      "weight": 0.3655,
+      "target": "arousal",
+      "type": "EmapModel",
+      "grid": 24
+    },
+    "model_quartile.pt": {
+      "weight": 0.318,
+      "target": "arousal",
+      "type": "EmapModelV2",
+      "grid": 24,
+      "quartile": true
+    },
+    "model_q48dev.pt": {
+      "weight": 0.3165,
+      "target": "deviation",
+      "type": "EmapModelV2",
+      "grid": 48,
+      "quartile": true
+    }
+  },
+  "train_global_mean": 0.486,
+  "calibration_k": 1.318,
+  "smoothing_sigma": 0.5,
+  "val_rmse": 0.3055,
+  "val_rmse_prev_submission": 0.3058
+}
